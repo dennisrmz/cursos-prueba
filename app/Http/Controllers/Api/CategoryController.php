@@ -29,6 +29,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        
         $data = $request->validate([
             'name' => 'required'
         ]);
@@ -44,8 +45,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
+        $category = Category::findOrFail($id);
+
         return new CategoryResource($category);
     }
 
