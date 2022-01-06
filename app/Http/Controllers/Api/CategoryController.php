@@ -18,7 +18,8 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return CategoryResource::collection($categories);
+        return response()->json($categories, 201);
+        /* return CategoryResource::collection($categories); */
     }
 
     /**
@@ -36,7 +37,8 @@ class CategoryController extends Controller
 
         $category = Category::create($data);
 
-        return new CategoryResource($category);
+        /* return new CategoryResource($category); */
+        return response()->json($category, 201);
     }
 
     /**
@@ -49,7 +51,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        return new CategoryResource($category);
+        return response()->json($category, 201);
     }
 
     /**
@@ -68,7 +70,7 @@ class CategoryController extends Controller
 
         $category->update($data);
 
-        return new CategoryResource($category);
+        return response()->json($category, 201);
     }
 
     /**
