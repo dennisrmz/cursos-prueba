@@ -17,8 +17,8 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::included()->get();
-        /* return response()->json($courses, 201); */
-        return CourseResource::collection($courses);
+        return response()->json($courses, 201);
+        /* return CourseResource::collection($courses); */
     }
 
     /**
@@ -36,7 +36,8 @@ class CourseController extends Controller
         ]);
 
         $course = Course::create($data);        
-        return new CourseResource($course);
+        /* return new CourseResource($course); */
+        return response()->json($course, 201);
  
     }
 
@@ -51,9 +52,9 @@ class CourseController extends Controller
 
         $course = Course::included()->findOrFail($id);
 
-        return new CourseResource($course);
+        /* return new CourseResource($course); */
 
-        /* return response()->json($course, 201); */
+        return response()->json($course, 201);
     }
 
     /**
@@ -73,8 +74,8 @@ class CourseController extends Controller
 
         $course->update($data);
 
-        return new CourseResource($course);
-        /* return response()->json($course, 201); */
+        /* return new CourseResource($course); */
+        return response()->json($course, 201);
     }
 
     /**
