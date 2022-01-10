@@ -28,8 +28,8 @@ trait ApiScopesTrait{
 
     public function scopeGetOrPaginate(Builder $query)
     {
-        if (request()->has('perPage')) {
-            $perPage = intval(request('perPage'));
+        if (request()->has('per_page')) {
+            $perPage = intval(request('per_page'));
 
             return $query->paginate($perPage);
         }
