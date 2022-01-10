@@ -25,4 +25,15 @@ trait ApiScopesTrait{
 
         return $query->with($relations);
     }
+
+    public function scopeGetOrPaginate(Builder $query)
+    {
+        if (request()->has('perPage')) {
+            $perPage = intval(request('perPage'));
+
+            return $query->paginate($perPage);
+        }
+
+        return $query->get();
+    }
 }
