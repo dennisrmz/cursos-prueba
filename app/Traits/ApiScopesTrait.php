@@ -60,4 +60,19 @@ trait ApiScopesTrait{
 
         }
     }
+
+    public function scopeFilter(Builder $query){
+        if (empty(request('filter'))) {
+            return;
+        }
+
+        $filters = request('filter');
+        $allowFilter = collect($this->allowFilter);
+
+        foreach ($filters as $key => $filter) {
+            if($allowFilter->contains($key)){
+                return $query->where($key, 'LIKE', '%' . $filter . '%');
+            }
+        }
+    }
 }

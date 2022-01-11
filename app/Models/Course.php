@@ -15,6 +15,7 @@ class Course extends Model
 
     protected $allowIncluded = ['category', 'user'];
     protected $allowSort = ['id', 'title', 'description', 'category_id'];
+    protected $allowFilter = ['id', 'title', 'description', 'category_id'];
 
     //Relacion uno a muchos inversa
     public function category()
