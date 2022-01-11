@@ -36,4 +36,28 @@ trait ApiScopesTrait{
 
         return $query->get();
     }
+
+    public function scopeSort(Builder $query){
+        if (empty(request('sort'))) {
+            return;
+        }
+
+        $sortFields = explode(',', request('sort'));
+        $allowSort = collect($this->allowSort);
+
+        foreach ($sortFields as $key => $sortField) {
+         
+            $direction = 'asc';
+
+            if (substr($sortField, 0, 1) == '-') {
+                $direction = 'desc';
+                $sortField = substr($sortField, 1);
+            }
+
+            if($allowSort->contains($sortField)){
+                return $query->orderBy($sortField, $direction);
+            }
+
+        }
+    }
 }

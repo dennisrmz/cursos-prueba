@@ -16,7 +16,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::included()->getOrPaginate();
+        $courses = Course::included()->sort()->getOrPaginate();
         return response()->json($courses, 201);
         /* return CourseResource::collection($courses); */
     }
