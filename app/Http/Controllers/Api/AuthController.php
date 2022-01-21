@@ -12,7 +12,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
 
-        return env('APP_URL') . '/oauth/token';
+        /* return env('APP_URL') . '/oauth/token'; */
 
         $response = Http::withHeaders([
             'Accept' => 'application/json',
