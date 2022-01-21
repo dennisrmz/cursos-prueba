@@ -11,7 +11,7 @@ class Course extends Model
 {
     use HasFactory, ApiScopesTrait;
 
-    protected $fillable = ['title', 'description', 'category_id'];
+    protected $fillable = ['title', 'description', 'user_id','category_id'];
 
     protected $allowIncluded = ['category', 'user'];
     protected $allowSort = ['id', 'title', 'description', 'category_id'];

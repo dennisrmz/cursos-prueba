@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api2;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CourseResource;
@@ -11,7 +11,7 @@ class CourseController extends Controller
 {
     public function __construct()
     {
-        /* $this->middleware('auth:api')->except(['index', 'show']); */
+        $this->middleware('auth:api')->except(['index', 'show']);
     }
 
     public function index()
@@ -25,20 +25,18 @@ class CourseController extends Controller
     public function store(Request $request)
     {
 
-        return auth()->user();
-
-        /* if(auth()->check()){
-            return auth()->user();
-        }
-
         $data = $request->validate([
             'title' => 'required',
             'description' => 'required',
             'category_id' => 'required|exists:categories,id',
         ]);
 
+        $data['user_id'] = auth()->user()->id;
+
+        /* return $data; */
+
         $course = Course::create($data);        
-        return response()->json($course, 201); */
+        return response()->json($course, 201);
  
     }
 
