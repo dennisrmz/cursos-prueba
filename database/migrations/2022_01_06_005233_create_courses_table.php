@@ -18,6 +18,8 @@ class CreateCoursesTable extends Migration
 
             $table->string('title');
             $table->text('description');
+
+            $table->foreignId('user_id')->default(1)->constrained();
             $table->foreignId('category_id')->constrained();
 
             $table->timestamps();
