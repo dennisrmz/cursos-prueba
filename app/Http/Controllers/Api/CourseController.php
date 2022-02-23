@@ -25,12 +25,6 @@ class CourseController extends Controller
     public function store(Request $request)
     {
 
-        return auth()->user();
-
-        /* if(auth()->check()){
-            return auth()->user();
-        }
-
         $data = $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -38,7 +32,7 @@ class CourseController extends Controller
         ]);
 
         $course = Course::create($data);        
-        return response()->json($course, 201); */
+        return response()->json($course, 201);
  
     }
 
